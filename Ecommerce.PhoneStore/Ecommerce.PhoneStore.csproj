@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\catalog\catalog.component.vue" />
     <None Remove="ClientApp\main.ts" />
+    <None Remove="ClientApp\router\index.ts" />
+    <None Remove="ClientApp\router\routes.ts" />
+    <None Remove="ClientApp\store\auth.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,11 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.vue" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\components\" />
+    <TypeScriptCompile Include="ClientApp\router\index.ts" />
+    <TypeScriptCompile Include="ClientApp\router\routes.ts" />
+    <TypeScriptCompile Include="ClientApp\store\auth.module.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">
