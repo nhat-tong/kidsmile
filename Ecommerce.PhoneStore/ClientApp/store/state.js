@@ -1,6 +1,6 @@
 export class State {
     constructor() {
-        this.auth = {};
+        this.auth = null;
         this.cart = [];
         this.showAuthModal = false;
         this.loading = false;

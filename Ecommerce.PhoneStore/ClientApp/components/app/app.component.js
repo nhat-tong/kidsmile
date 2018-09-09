@@ -12,13 +12,13 @@ let AppComponent = class AppComponent extends Vue {
         super();
     }
     get showAuthModal() {
-        return true;
+        return this.$store.state.auth.showAuthModal;
     }
     get isAdmin() {
-        return false;
+        return this.$store.getters['auth/isInRole']('Admin');
     }
     get isCustomer() {
-        return false;
+        return (this.$store.getters['auth/isInRole']('Customer') || !this.$store.getters['auth/isAuthenticated']);
     }
 };
 AppComponent = __decorate([

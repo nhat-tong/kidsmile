@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Ecommerce.Infrastructure.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Ecommerce.PhoneStore
@@ -14,11 +11,32 @@ namespace Ecommerce.PhoneStore
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var host = WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var logger = scope.ServiceProvider.GetService<ILogger<Program>>();
+                try
+                {
+
+                    logger.LogInformation("Seeding the database...");
+                    var initializer = scope.ServiceProvider.GetService<EcommerceDbInitializer>();
+                    initializer.SeedAsync().Wait();
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, "Failed to seed the database");
+                }
+            }
+
+            return host;
+        }
     }
 }
