@@ -19,10 +19,27 @@ export default class LoginComponent extends Vue {
     }
 
     login() {
+        const payload = {
+            email: this.email,
+            password: this.password
+        };
 
+        this.$store.dispatch('authModule/login', payload)
+            .then(response => {
+                this.error = null;
+                this.email = '';
+                this.password = '';
+
+                if (this.$route.query.redirect) {
+                    this.$router.push(this.$route.query.redirect);
+                }
+            })
+            .catch(error => {
+                this.error = error.data;
+            });
     }
 
     close() {
-
+        this.$emit('close');
     }
 }

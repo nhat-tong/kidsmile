@@ -1,5 +1,12 @@
-import { State } from './state';
 import axios from "axios";
+// initial state
+class AuthState {
+    constructor() {
+        this.auth = null;
+        this.showAuthModal = false;
+        this.loading = false;
+    }
+}
 // getters
 const getters = {
     isAuthenticated: (state) => {
@@ -39,6 +46,9 @@ const mutations = {
     },
     logout: (state) => {
         state.auth = null;
+    },
+    restoreState: (state, payload) => {
+        Object.assign(state, payload);
     }
 };
 // actions
@@ -47,7 +57,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             commit("registerRequest");
             axios
-                .post("/api/account", payload)
+                .post("/account/register", payload)
                 .then(response => {
                 commit("registerSuccess");
                 resolve(response);
@@ -62,7 +72,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             commit("loginRequest");
             axios
-                .post("/api/token", payload)
+                .post("/account/login", payload)
                 .then(response => {
                 const auth = response.data;
                 axios.defaults.headers.common["Authorization"] = `Bearer ${auth.access_token}`;
@@ -88,7 +98,7 @@ export class AuthModule {
         this.getters = getters;
         this.mutations = mutations;
         this.actions = actions;
-        this.state = new State();
+        this.state = new AuthState();
     }
 }
 //# sourceMappingURL=auth.module.js.map

@@ -1,4 +1,9 @@
-import { State } from './state';
+// initial state
+class CartState {
+    constructor() {
+        this.cart = [];
+    }
+}
 // getters
 const getters = {
     shoppingCartTotal: (state) => {
@@ -34,9 +39,6 @@ const mutations = {
     },
     clearCartItems: (state) => {
         state.cart = [];
-    },
-    initialise: (state, payload) => {
-        Object.assign(state, payload);
     }
 };
 // actions
@@ -70,7 +72,7 @@ export class CartModule {
         this.getters = getters;
         this.mutations = mutations;
         this.actions = actions;
-        this.state = new State();
+        this.state = new CartState();
     }
 }
 //# sourceMappingURL=cart.module.js.map

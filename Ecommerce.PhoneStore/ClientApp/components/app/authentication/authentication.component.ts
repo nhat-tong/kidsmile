@@ -21,7 +21,16 @@ export default class AuthenticationComponent extends Vue {
         super();
     }
 
-    success() { }
+    success() {
+        this.registered = true;
+        this.index = 0;
+    }
 
-    close() { }
+    close() {
+        this.$store.commit('authModule/hideAuthModal');
+
+        let query = Object.assign({}, this.$route.query);
+        delete query.redirect;
+        this.$router.push({ query: query });
+    }
 }

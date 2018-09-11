@@ -1,7 +1,9 @@
 ﻿<template>
     <form @submit.prevent="submit" class="p-2">
         <b-alert variant="danger" :show="regErrors !== null" dismissible @dismissed="regErrors = null">
-            <div v-for="(error, index) in regErrors" :key="index">{{ error[0] }}</div>
+            <ul>
+                <li v-for="(error, index) in regErrors" :key="index">{{ error.description }}</li>
+            </ul>
         </b-alert>
         <b-form-group label="E-mail">
             <b-form-input v-model.trim="email" />

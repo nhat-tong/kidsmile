@@ -11,6 +11,7 @@
     <None Remove="ClientApp\router\index.ts" />
     <None Remove="ClientApp\router\routes.ts" />
     <None Remove="ClientApp\store\auth.module.ts" />
+    <None Remove="ClientApp\store\state.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +35,7 @@
     <TypeScriptCompile Include="ClientApp\router\index.ts" />
     <TypeScriptCompile Include="ClientApp\router\routes.ts" />
     <TypeScriptCompile Include="ClientApp\store\auth.module.ts" />
+    <TypeScriptCompile Include="ClientApp\store\state.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">

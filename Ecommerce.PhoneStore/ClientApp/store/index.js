@@ -6,12 +6,12 @@ Vue.use(Vuex);
 // export Store with modules
 const store = new Vuex.Store({
     modules: {
-        auth: new AuthModule(),
-        cart: new CartModule()
+        authModule: new AuthModule(),
+        cartModule: new CartModule()
     }
 });
 store.subscribe((mutation, state) => {
-    localStorage.setItem("store", JSON.stringify(state));
+    localStorage.setItem("applicationState", JSON.stringify(state));
 });
 export default store;
 //# sourceMappingURL=index.js.map

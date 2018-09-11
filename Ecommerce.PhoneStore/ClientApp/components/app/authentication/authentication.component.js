@@ -14,8 +14,16 @@ let AuthenticationComponent = class AuthenticationComponent extends Vue {
         this.index = 0;
         this.registered = false;
     }
-    success() { }
-    close() { }
+    success() {
+        this.registered = true;
+        this.index = 0;
+    }
+    close() {
+        this.$store.commit('authModule/hideAuthModal');
+        let query = Object.assign({}, this.$route.query);
+        delete query.redirect;
+        this.$router.push({ query: query });
+    }
 };
 __decorate([
     Prop()

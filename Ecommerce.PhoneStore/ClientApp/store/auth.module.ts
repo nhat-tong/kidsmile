@@ -1,57 +1,60 @@
-﻿import { State } from './state';
+﻿import { AuthState } from './state';
 import { Module, GetterTree, MutationTree, ActionTree } from 'vuex';
 import axios from "axios";
 
 // getters
-const getters: GetterTree<State, any> = {
-    isAuthenticated: (state: State) => {
+const getters: GetterTree<AuthState, any> = {
+    isAuthenticated: (state: AuthState) => {
         return state.auth !== null && state.auth.access_token !== null;
     },
-    isInRole: (state: State, getters) => role => {
+    isInRole: (state: AuthState, getters) => role => {
         const result = getters.isAuthenticated && state.auth.roles.indexOf(role) > -1;
         return result;
     }
 }
 
 // mutations
-const mutations: MutationTree<State> = {
-    showAuthModal: (state : State) => {
+const mutations: MutationTree<AuthState> = {
+    showAuthModal: (state: AuthState) => {
         state.showAuthModal = true;
     },
-    hideAuthModal: (state: State) => {
+    hideAuthModal: (state: AuthState) => {
         state.showAuthModal = false;
     },
-    loginRequest: (state: State) => {
+    loginRequest: (state: AuthState) => {
         state.loading = true;
     },
-    loginSuccess: (state: State, payload) => {
+    loginSuccess: (state: AuthState, payload) => {
         state.auth = payload;
         state.loading = false;
     },
-    loginError: (state: State) => {
+    loginError: (state: AuthState) => {
         state.loading = false;
     },
-    registerRequest: (state: State) => {
+    registerRequest: (state: AuthState) => {
         state.loading = true;
     },
-    registerSuccess: (state: State) => {
+    registerSuccess: (state: AuthState) => {
         state.loading = false;
     },
-    registerError: (state: State) => {
+    registerError: (state: AuthState) => {
         state.loading = false;
     },
-    logout: (state: State) => {
+    logout: (state: AuthState) => {
         state.auth = null;
+    },
+    restoreState: (state: AuthState, payload) => {
+        Object.assign(state, payload);
     }
 }
 
 // actions
-const actions: ActionTree<State, any> = {
+const actions: ActionTree<AuthState, any> = {
     register: ({ commit }, payload) => {
         return new Promise((resolve, reject) => {
             commit("registerRequest");
             axios
-                .post("/api/account", payload)
+                .post("/account/register", payload)
                 .then(response => {
                     commit("registerSuccess");
                     resolve(response);
@@ -66,7 +69,7 @@ const actions: ActionTree<State, any> = {
         return new Promise((resolve, reject) => {
             commit("loginRequest");
             axios
-                .post("/api/token", payload)
+                .post("/account/login", payload)
                 .then(response => {
                     const auth = response.data;
                     axios.defaults.headers.common["Authorization"] = `Bearer ${
@@ -89,15 +92,15 @@ const actions: ActionTree<State, any> = {
     }
 }
 
-export class AuthModule implements Module<State, any> {
+export class AuthModule implements Module<AuthState, any> {
     namespaced: boolean = true;
 
-    state: State;
+    state: AuthState;
     getters = getters;
     mutations = mutations;
     actions = actions;
 
     constructor() {
-        this.state = new State();
+        this.state = new AuthState();
     }
 }

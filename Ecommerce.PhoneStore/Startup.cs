@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Ecommerce.Core.Shared;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.PhoneStore.Framework;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +18,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Ecommerce.PhoneStore
 {
@@ -30,10 +34,40 @@ namespace Ecommerce.PhoneStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configure EF
             services.AddDbContext<EcommerceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyDB")));
             services.AddIdentity<AppUser, AppRole>()
                    .AddEntityFrameworkStores<EcommerceContext>()
                    .AddDefaultTokenProviders();
+
+            // Configure authentication
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options => {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.ClaimsIssuer = Configuration["Authentication:JwtIssuer"];
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["Authentication:JwtIssuer"],
+
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Authentication:JwtAudience"],
+
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:JwtKey"])),
+
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            services.Configure<AuthenticationOption>(Configuration.GetSection("Authentication"));
 
             services.AddScoped<EcommerceDbInitializer>();
 
@@ -66,6 +100,8 @@ namespace Ecommerce.PhoneStore
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

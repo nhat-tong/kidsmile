@@ -2,10 +2,12 @@
 import { Component } from 'vue-property-decorator';
 
 import AuthenticationComponent from './authentication/authentication.component.vue';
+import NavigationComponent from './navigation/nav.component.vue';
 
 @Component({
     components: {
-        'auth-modal': AuthenticationComponent
+        'auth-modal': AuthenticationComponent,
+        'nav-item': NavigationComponent
     }
 })
 export default class AppComponent extends Vue {
@@ -14,14 +16,14 @@ export default class AppComponent extends Vue {
     }
 
     get showAuthModal() {
-        return this.$store.state.auth.showAuthModal;
+        return this.$store.state.authModule.showAuthModal;
     }
 
     get isAdmin() {
-        return this.$store.getters['auth/isInRole']('Admin');
+        return this.$store.getters['authModule/isInRole']('Admin');
     }
 
     get isCustomer() {
-        return (this.$store.getters['auth/isInRole']('Customer') || !this.$store.getters['auth/isAuthenticated']);
+        return (this.$store.getters['authModule/isInRole']('Customer') || !this.$store.getters['authModule/isAuthenticated']);
     }
 }

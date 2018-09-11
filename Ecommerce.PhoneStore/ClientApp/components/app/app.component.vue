@@ -9,6 +9,7 @@
                     <b-nav-item v-if="isAdmin" to="/admin">Admin</b-nav-item>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto mr-4">
+                    <nav-item />
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
