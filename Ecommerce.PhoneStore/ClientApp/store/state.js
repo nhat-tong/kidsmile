@@ -1,9 +1,13 @@
-export class State {
+export class AuthState {
     constructor() {
         this.auth = null;
-        this.cart = [];
         this.showAuthModal = false;
         this.loading = false;
+    }
+}
+export class CartState {
+    constructor() {
+        this.cart = [];
     }
 }
 //# sourceMappingURL=state.js.map

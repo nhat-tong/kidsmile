@@ -1,12 +1,5 @@
+import { AuthState } from './state';
 import axios from "axios";
-// initial state
-class AuthState {
-    constructor() {
-        this.auth = null;
-        this.showAuthModal = false;
-        this.loading = false;
-    }
-}
 // getters
 const getters = {
     isAuthenticated: (state) => {

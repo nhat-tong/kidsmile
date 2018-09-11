@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\catalog\catalog.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.vue" />
+    <None Remove="ClientApp\components\catalog\product-list\product-list.component.ts" />
+    <None Remove="ClientApp\filters\index.ts" />
     <None Remove="ClientApp\main.ts" />
     <None Remove="ClientApp\router\index.ts" />
     <None Remove="ClientApp\router\routes.ts" />
     <None Remove="ClientApp\store\auth.module.ts" />
     <None Remove="ClientApp\store\state.ts" />
+    <None Remove="ClientApp\vue-router.shims.d.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,12 +34,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.vue" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\product-list\product-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\filters\index.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\router\index.ts" />
     <TypeScriptCompile Include="ClientApp\router\routes.ts" />
     <TypeScriptCompile Include="ClientApp\store\auth.module.ts" />
     <TypeScriptCompile Include="ClientApp\store\state.ts" />
+    <TypeScriptCompile Include="ClientApp\vue-router.shims.d.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">

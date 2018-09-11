@@ -5,6 +5,10 @@ import AppComponent from "./components/app/app.component.vue";
 
 import router from "./router/index";
 import store from './store/index';
+import { currency, date } from './filters/index';
+
+Vue.filter('currency', currency);
+Vue.filter('date', date);
 
 Vue.use(BootstrapVue);
 

@@ -1,9 +1,4 @@
-// initial state
-class CartState {
-    constructor() {
-        this.cart = [];
-    }
-}
+import { CartState } from './state';
 // getters
 const getters = {
     shoppingCartTotal: (state) => {
@@ -39,6 +34,9 @@ const mutations = {
     },
     clearCartItems: (state) => {
         state.cart = [];
+    },
+    restoreState: (state, payload) => {
+        Object.assign(state, payload);
     }
 };
 // actions
