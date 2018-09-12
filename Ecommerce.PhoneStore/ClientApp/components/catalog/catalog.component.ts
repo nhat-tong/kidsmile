@@ -1,11 +1,14 @@
 ﻿import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from 'axios';
-import ProductListComponent from './product-list/product-list.component.vue';
 import { Next } from 'vue-router';
+
+import ProductListComponent from './product-list/product-list.component.vue';
+import SearchBarComponent from './search-bar/search-bar.component.vue';
 
 @Component({
     components: {
+        'search-bar': SearchBarComponent,
         'product-list': ProductListComponent
     },
     beforeRouteEnter(to, from, next: Next<CatalogComponent>) {
@@ -20,6 +23,13 @@ import { Next } from 'vue-router';
                     next(vm => vm.setData(products.data, filters.data));
                 })
             );
+    },
+    beforeRouteUpdate(to, from, next: Next<CatalogComponent>) {
+        let vm = this as CatalogComponent;
+        axios.get("/product", { params: to.query }).then(response => {
+            vm.products = response.data;
+            next();
+        });
     }
 })
 export default class CatalogComponent extends Vue {

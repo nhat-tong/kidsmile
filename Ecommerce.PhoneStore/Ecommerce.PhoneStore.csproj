@@ -9,6 +9,7 @@
     <None Remove="ClientApp\components\catalog\catalog.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.vue" />
     <None Remove="ClientApp\components\catalog\product-list\product-list.component.ts" />
+    <None Remove="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
     <None Remove="ClientApp\filters\index.ts" />
     <None Remove="ClientApp\main.ts" />
     <None Remove="ClientApp\router\index.ts" />
@@ -37,6 +38,7 @@
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.vue" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-list\product-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
     <TypeScriptCompile Include="ClientApp\filters\index.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\router\index.ts" />

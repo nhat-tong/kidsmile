@@ -6,8 +6,8 @@
             </b-col>
             <b-col cols="9">
                 <div class="mt-4 flex">
-                    <!--<search-bar class="search" />
-                    <product-sort class="ml-4" />-->
+                    <search-bar class="search" />
+                    <!--<product-sort class="ml-4" />-->
                 </div>
                 <product-list :products="sortedProducts" ></product-list>
             </b-col>

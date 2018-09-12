@@ -8,6 +8,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from 'axios';
 import ProductListComponent from './product-list/product-list.component.vue';
+import SearchBarComponent from './search-bar/search-bar.component.vue';
 let CatalogComponent = class CatalogComponent extends Vue {
     constructor() {
         super();
@@ -51,6 +52,7 @@ let CatalogComponent = class CatalogComponent extends Vue {
 CatalogComponent = __decorate([
     Component({
         components: {
+            'search-bar': SearchBarComponent,
             'product-list': ProductListComponent
         },
         beforeRouteEnter(to, from, next) {
@@ -63,6 +65,13 @@ CatalogComponent = __decorate([
                 .then(axios.spread((products, filters) => {
                 next(vm => vm.setData(products.data, filters.data));
             }));
+        },
+        beforeRouteUpdate(to, from, next) {
+            let vm = this;
+            axios.get("/product", { params: to.query }).then(response => {
+                vm.products = response.data;
+                next();
+            });
         }
     })
 ], CatalogComponent);
