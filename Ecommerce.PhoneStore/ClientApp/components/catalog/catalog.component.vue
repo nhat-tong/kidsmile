@@ -7,7 +7,7 @@
             <b-col cols="9">
                 <div class="mt-4 flex">
                     <search-bar class="search" />
-                    <!--<product-sort class="ml-4" />-->
+                    <product-sort class="ml-4" />
                 </div>
                 <product-list :products="sortedProducts" ></product-list>
             </b-col>
@@ -16,3 +16,14 @@
 </template>
 
 <script lang="ts" src="./catalog.component.ts"></script>
+
+<style lang="css" scoped>
+    .flex {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .search {
+        flex: 1;
+    }
+</style>

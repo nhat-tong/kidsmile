@@ -9,6 +9,7 @@ import { Component } from 'vue-property-decorator';
 import axios from 'axios';
 import ProductListComponent from './product-list/product-list.component.vue';
 import SearchBarComponent from './search-bar/search-bar.component.vue';
+import ProductSortComponent from './product-sort/product-sort.component.vue';
 let CatalogComponent = class CatalogComponent extends Vue {
     constructor() {
         super();
@@ -53,7 +54,8 @@ CatalogComponent = __decorate([
     Component({
         components: {
             'search-bar': SearchBarComponent,
-            'product-list': ProductListComponent
+            'product-list': ProductListComponent,
+            'product-sort': ProductSortComponent
         },
         beforeRouteEnter(to, from, next) {
             // Ref: https://github.com/vuejs/vue-router/issues/1863

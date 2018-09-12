@@ -6,33 +6,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
+import _ from 'lodash';
 let SearchBarComponent = class SearchBarComponent extends Vue {
     constructor() {
         super();
-        this.value = '';
+        this.searchTerm = '';
     }
     onPropertyChanged(value, oldValue) {
         this.search();
     }
-    get query() {
-        return this.$route.query.q || '';
-    }
-    update(newVal) {
-        this.value = newVal;
-    }
-    search() {
-        let query = Object.assign({}, this.$route.query);
-        if (this.value.trim()) {
-            query.q = this.value;
-        }
-        else {
-            delete query.q;
-        }
-        this.$router.push({ query: query });
+    created() {
+        let vm = this;
+        this.search = _.debounce(function () {
+            let query = Object.assign({}, vm.$route.query);
+            if (vm.searchTerm.trim()) {
+                query.q = vm.searchTerm;
+            }
+            else {
+                delete query.q;
+            }
+            vm.$router.push({ query: query });
+        }, 500);
     }
 };
 __decorate([
-    Watch('value')
+    Watch('searchTerm')
 ], SearchBarComponent.prototype, "onPropertyChanged", null);
 SearchBarComponent = __decorate([
     Component
