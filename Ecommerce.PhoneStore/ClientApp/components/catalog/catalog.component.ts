@@ -6,12 +6,14 @@ import { Next } from 'vue-router';
 import ProductListComponent from './product-list/product-list.component.vue';
 import SearchBarComponent from './search-bar/search-bar.component.vue';
 import ProductSortComponent from './product-sort/product-sort.component.vue';
+import ProductFilterComponent from './product-filter/product-filter.component.vue';
 
 @Component({
     components: {
         'search-bar': SearchBarComponent,
         'product-list': ProductListComponent,
-        'product-sort': ProductSortComponent
+        'product-sort': ProductSortComponent,
+        'product-filter': ProductFilterComponent
     },
     beforeRouteEnter(to, from, next: Next<CatalogComponent>) {
         // Ref: https://github.com/vuejs/vue-router/issues/1863
@@ -38,7 +40,7 @@ export default class CatalogComponent extends Vue {
     products: any = [];
     filters: any = {
         brands: [],
-        capacity: [],
+        storage: [],
         colours: [],
         os: [],
         features: []

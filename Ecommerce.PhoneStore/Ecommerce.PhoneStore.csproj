@@ -8,6 +8,10 @@
   <ItemGroup>
     <None Remove="ClientApp\components\catalog\catalog.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.vue" />
+    <None Remove="ClientApp\components\catalog\product-filter\filter-accordion\filter-accordion.component.ts" />
+    <None Remove="ClientApp\components\catalog\product-filter\multi-select-filter\multi-select-filter.component.ts" />
+    <None Remove="ClientApp\components\catalog\product-filter\product-filter.component.ts" />
+    <None Remove="ClientApp\components\catalog\product-filter\range-filter\range-filter.component.ts" />
     <None Remove="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <None Remove="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <None Remove="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
@@ -38,6 +42,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.vue" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\product-filter\filter-accordion\filter-accordion.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\product-filter\multi-select-filter\multi-select-filter.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\product-filter\product-filter.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\catalog\product-filter\range-filter\range-filter.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\search-bar\search-bar.component.ts" />

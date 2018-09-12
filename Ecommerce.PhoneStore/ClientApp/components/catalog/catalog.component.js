@@ -10,13 +10,14 @@ import axios from 'axios';
 import ProductListComponent from './product-list/product-list.component.vue';
 import SearchBarComponent from './search-bar/search-bar.component.vue';
 import ProductSortComponent from './product-sort/product-sort.component.vue';
+import ProductFilterComponent from './product-filter/product-filter.component.vue';
 let CatalogComponent = class CatalogComponent extends Vue {
     constructor() {
         super();
         this.products = [];
         this.filters = {
             brands: [],
-            capacity: [],
+            storage: [],
             colours: [],
             os: [],
             features: []
@@ -55,7 +56,8 @@ CatalogComponent = __decorate([
         components: {
             'search-bar': SearchBarComponent,
             'product-list': ProductListComponent,
-            'product-sort': ProductSortComponent
+            'product-sort': ProductSortComponent,
+            'product-filter': ProductFilterComponent
         },
         beforeRouteEnter(to, from, next) {
             // Ref: https://github.com/vuejs/vue-router/issues/1863
