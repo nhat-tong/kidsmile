@@ -34,7 +34,7 @@ __decorate([
     Prop({ type: Number })
 ], RangeFilterComponent.prototype, "interval", void 0);
 __decorate([
-    Prop({ type: String, required: true })
+    Prop({ required: true })
 ], RangeFilterComponent.prototype, "formatter", void 0);
 __decorate([
     Prop({ type: String, required: true })

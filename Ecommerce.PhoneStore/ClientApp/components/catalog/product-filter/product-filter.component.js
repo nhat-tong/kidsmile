@@ -16,6 +16,9 @@ let ProductFilterComponent = class ProductFilterComponent extends Vue {
     priceFormatter(value) {
         return `${value}€`;
     }
+    reset() {
+        this.$router.push({ query: {} });
+    }
 };
 __decorate([
     Prop({ type: Object, required: true })

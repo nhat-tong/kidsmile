@@ -11,10 +11,34 @@ let MultiSelectFilterComponent = class MultiSelectFilterComponent extends Vue {
         super();
     }
     get selected() {
-        return this.$route.query[this.queryKey] || [];
+        return this.$route.query[this.queryKey] || '';
     }
-    clear() { }
-    filter(item) { }
+    clear() {
+        if (this.selected.length) {
+            let query = Object.assign({}, this.$route.query);
+            delete query[this.queryKey];
+            this.$router.push({ query: query });
+        }
+    }
+    filter(item) {
+        let query = Object.assign({}, this.$route.query);
+        let split = query[this.queryKey] ? query[this.queryKey].split("|") : [];
+        if (split.indexOf(item) > -1) {
+            let index = split.indexOf(item);
+            split.splice(index, 1);
+        }
+        else {
+            split.push(item);
+        }
+        if (split.length) {
+            let joined = split.join("|");
+            query[this.queryKey] = joined;
+        }
+        else {
+            delete query[this.queryKey];
+        }
+        this.$router.push({ query: query });
+    }
 };
 __decorate([
     Prop({ type: Array, required: true })

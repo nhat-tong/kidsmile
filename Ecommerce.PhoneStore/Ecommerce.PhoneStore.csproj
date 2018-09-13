@@ -15,6 +15,7 @@
     <None Remove="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <None Remove="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <None Remove="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
+    <None Remove="ClientApp\components\shared\gallery.component.ts" />
     <None Remove="ClientApp\filters\index.ts" />
     <None Remove="ClientApp\main.ts" />
     <None Remove="ClientApp\router\index.ts" />
@@ -49,6 +50,8 @@
     <TypeScriptCompile Include="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\product\product-detail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\gallery.component.ts" />
     <TypeScriptCompile Include="ClientApp\filters\index.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\router\index.ts" />

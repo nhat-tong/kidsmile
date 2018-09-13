@@ -18,6 +18,7 @@ export default class SearchBarComponent extends Vue {
 
     created() {
         let vm = this;
+        vm.searchTerm = vm.$route.query['q'] || '';
         this.search = _.debounce(function () {
             let query = Object.assign({}, vm.$route.query);
 
