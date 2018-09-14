@@ -6,6 +6,7 @@ using Ecommerce.Core.Entities;
 using Ecommerce.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
@@ -18,12 +19,39 @@ namespace Ecommerce.PhoneStore.Features.Order
     public class OrderController : ControllerBase
     {
         private readonly EcommerceContext _dbContext;
+        private readonly UserManager<AppUser> _userManager;
 
-        public OrderController(EcommerceContext context)
+        public OrderController(EcommerceContext context, UserManager<AppUser> userManager)
         {
             _dbContext = context;
+            _userManager = userManager;
         }
 
+        #region Get
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+            if (user == null) return BadRequest();
+
+            var orders = await _dbContext.Orders
+              .Where(x => User.IsInRole("Admin") || x.AppUserId == user.Id)
+              .Select(x => new OrderListModel
+              {
+                  Id = x.Id,
+                  Customer = user.FullName,
+                  Placed = x.Placed,
+                  Items = x.Items.Sum(i => i.Quantity),
+                  Total = x.Items.Sum(i => i.ProductVariant.Price * i.Quantity),
+                  PaymentStatus = Enum.GetName(typeof(PaymentStatus), x.PaymentStatus)
+              })
+              .ToListAsync();
+
+            return Ok(orders);
+        }
+        #endregion
+
+        #region Post
         [Authorize(Roles = "Customer")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderModel model)
@@ -31,6 +59,8 @@ namespace Ecommerce.PhoneStore.Features.Order
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var user = await _dbContext.Users.SingleAsync(x => x.UserName == HttpContext.User.Identity.Name);
+            if (user == null) return BadRequest();
+
             var order = new Core.Entities.Order
             {
                 DeliveryAddress = new Address
@@ -84,4 +114,5 @@ namespace Ecommerce.PhoneStore.Features.Order
             return Ok(new OrderResultModel(order.Id, order.PaymentStatus));
         }
     }
+    #endregion
 }

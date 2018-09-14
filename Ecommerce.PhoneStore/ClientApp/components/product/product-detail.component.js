@@ -8,7 +8,7 @@ import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
 import axios from 'axios';
 import _ from 'lodash';
-import GalleryComponent from '../shared/gallery.component.vue';
+import GalleryComponent from '../shared/gallery/gallery.component.vue';
 let ProductDetailComponent = class ProductDetailComponent extends Vue {
     constructor() {
         super();

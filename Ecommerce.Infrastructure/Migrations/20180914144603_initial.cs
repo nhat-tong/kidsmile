@@ -176,7 +176,7 @@ namespace Ecommerce.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
+                    AppUserId = table.Column<Guid>(nullable: false),
                     Placed = table.Column<DateTime>(nullable: false),
                     DeliveryAddress_FirstName = table.Column<string>(nullable: false),
                     DeliveryAddress_LastName = table.Column<string>(nullable: false),
@@ -185,8 +185,7 @@ namespace Ecommerce.Infrastructure.Migrations
                     DeliveryAddress_TownCity = table.Column<string>(nullable: false),
                     DeliveryAddress_County = table.Column<string>(nullable: false),
                     DeliveryAddress_Postcode = table.Column<string>(nullable: false),
-                    PaymentStatus = table.Column<int>(nullable: false),
-                    AppUserId = table.Column<Guid>(nullable: true)
+                    PaymentStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,7 +195,7 @@ namespace Ecommerce.Infrastructure.Migrations
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

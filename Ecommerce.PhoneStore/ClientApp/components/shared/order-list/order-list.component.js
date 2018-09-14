@@ -6,19 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-let CheckoutSuccessComponent = class CheckoutSuccessComponent extends Vue {
+let OrderListComponent = class OrderListComponent extends Vue {
     constructor() {
         super();
     }
-    get variant() {
-        return this.order.paymentStatus === "Paid" ? "success" : "warning";
+    get isAdmin() {
+        return this.$store.getters['authModule/isInRole']('Admin');
     }
 };
 __decorate([
-    Prop({ type: Object, required: true })
-], CheckoutSuccessComponent.prototype, "order", void 0);
-CheckoutSuccessComponent = __decorate([
+    Prop({ type: Array, required: true })
+], OrderListComponent.prototype, "orders", void 0);
+OrderListComponent = __decorate([
     Component
-], CheckoutSuccessComponent);
-export default CheckoutSuccessComponent;
-//# sourceMappingURL=checkout-success.component.js.map
+], OrderListComponent);
+export default OrderListComponent;
+//# sourceMappingURL=order-list.component.js.map

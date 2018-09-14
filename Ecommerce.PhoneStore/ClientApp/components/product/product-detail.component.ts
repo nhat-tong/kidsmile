@@ -3,7 +3,7 @@ import { Component, Watch } from 'vue-property-decorator';
 import { Next } from 'vue-router';
 import axios from 'axios';
 import _ from 'lodash';
-import GalleryComponent from '../shared/gallery.component.vue';
+import GalleryComponent from '../shared/gallery/gallery.component.vue';
 
 @Component({
     components: {

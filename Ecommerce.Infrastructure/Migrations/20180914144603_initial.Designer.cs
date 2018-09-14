@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20180909182221_initial")]
+    [Migration("20180914144603_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,13 +87,11 @@ namespace Ecommerce.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("AppUserId");
+                    b.Property<Guid>("AppUserId");
 
                     b.Property<int>("PaymentStatus");
 
                     b.Property<DateTime>("Placed");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -409,7 +407,8 @@ namespace Ecommerce.Infrastructure.Migrations
                 {
                     b.HasOne("Ecommerce.Infrastructure.Data.AppUser")
                         .WithMany("Orders")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.OwnsOne("Ecommerce.Core.Entities.Address", "DeliveryAddress", b1 =>
                         {

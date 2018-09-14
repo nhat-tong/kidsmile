@@ -9,4 +9,8 @@ export default class CheckoutSuccessComponent extends Vue {
     constructor() {
         super();
     }
+
+    get variant() {
+        return this.order.paymentStatus === "Paid" ? "success" : "warning";
+    }
 }
