@@ -2,6 +2,7 @@ import Vue from "vue";
 import BootstrapVue from "bootstrap-vue";
 import axios from "axios";
 import VueToastr from '@deveodk/vue-toastr';
+import VeeValidate from 'vee-validate';
 import AppComponent from "./components/app/app.component.vue";
 import router from "./router/index";
 import store from './store/index';
@@ -13,6 +14,7 @@ Vue.use(VueToastr, {
     defaultPosition: 'toast-top-right',
     defaultTimeout: 1000
 });
+Vue.use(VeeValidate);
 // restore application state
 const applicationState = localStorage.getItem("applicationState");
 if (applicationState) {

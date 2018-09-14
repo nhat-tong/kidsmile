@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,4 +9,8 @@
 
 @section scripts {
     <script src="~/dist/app.js" asp-append-version="true"></script>
+    <script>
+        window.stripeOptions = window.stripeOptions || {};
+        window.stripeOptions.publishableKey = '@Configuration["Stripe:PublishableKey"]';
+    </script>
 }

@@ -40,7 +40,7 @@ const mutations: MutationTree<CartState> = {
 
         state.cart.splice(index, 1, Object.assign({}, cartItem));
     },
-    clearCartItems: (state: CartState) => {
+    clearCart: (state: CartState) => {
         state.cart = [];
     },
     restoreState: (state: CartState, payload) => {

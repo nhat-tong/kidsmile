@@ -8,6 +8,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import AuthenticationComponent from './authentication/authentication.component.vue';
 import NavigationComponent from './navigation/nav.component.vue';
+import CartSummaryComponent from '../cart/cart-summary/cart-summary.component.vue';
 let AppComponent = class AppComponent extends Vue {
     constructor() {
         super();
@@ -26,7 +27,8 @@ AppComponent = __decorate([
     Component({
         components: {
             'auth-modal': AuthenticationComponent,
-            'nav-item': NavigationComponent
+            'nav-item': NavigationComponent,
+            'cart-summary': CartSummaryComponent
         }
     })
 ], AppComponent);

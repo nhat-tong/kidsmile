@@ -5,20 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
-let CartSummaryComponent = class CartSummaryComponent extends Vue {
+import { Component, Prop } from 'vue-property-decorator';
+let CheckoutSuccessComponent = class CheckoutSuccessComponent extends Vue {
     constructor() {
         super();
     }
-    get count() {
-        return this.$store.getters['cartModule/shoppingCartItemCount'];
-    }
-    get total() {
-        return this.$store.getters['cartModule/shoppingCartTotal'];
-    }
 };
-CartSummaryComponent = __decorate([
+__decorate([
+    Prop({ type: Object, required: true })
+], CheckoutSuccessComponent.prototype, "order", void 0);
+CheckoutSuccessComponent = __decorate([
     Component
-], CartSummaryComponent);
-export default CartSummaryComponent;
-//# sourceMappingURL=cart-summary.component.js.map
+], CheckoutSuccessComponent);
+export default CheckoutSuccessComponent;
+//# sourceMappingURL=checkout-success.component.js.map

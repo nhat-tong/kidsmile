@@ -6,19 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-let CartSummaryComponent = class CartSummaryComponent extends Vue {
+let CheckoutSummaryComponent = class CheckoutSummaryComponent extends Vue {
     constructor() {
         super();
     }
-    get count() {
+    get items() {
+        return this.$store.state.cartModule.cart;
+    }
+    get itemCount() {
         return this.$store.getters['cartModule/shoppingCartItemCount'];
     }
     get total() {
         return this.$store.getters['cartModule/shoppingCartTotal'];
     }
 };
-CartSummaryComponent = __decorate([
+CheckoutSummaryComponent = __decorate([
     Component
-], CartSummaryComponent);
-export default CartSummaryComponent;
-//# sourceMappingURL=cart-summary.component.js.map
+], CheckoutSummaryComponent);
+export default CheckoutSummaryComponent;
+//# sourceMappingURL=checkout-summary.component.js.map

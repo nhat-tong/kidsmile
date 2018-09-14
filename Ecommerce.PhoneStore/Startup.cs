@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#region using
+using System;
 using System.Text;
-using System.Threading.Tasks;
 using Ecommerce.Core.Shared;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.PhoneStore.Framework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -19,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
+#endregion
 
 namespace Ecommerce.PhoneStore
 {
@@ -113,6 +111,9 @@ namespace Ecommerce.PhoneStore
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            // Setup Stripe Secret Key
+            StripeConfiguration.SetApiKey(Configuration["Stripe:SecretKey"]);
         }
     }
 }

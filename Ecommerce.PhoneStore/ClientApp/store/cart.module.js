@@ -32,7 +32,7 @@ const mutations = {
         cartItem.quantity = payload.quantity;
         state.cart.splice(index, 1, Object.assign({}, cartItem));
     },
-    clearCartItems: (state) => {
+    clearCart: (state) => {
         state.cart = [];
     },
     restoreState: (state, payload) => {

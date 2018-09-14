@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <UserSecretsId>2e715369-0d30-471e-9423-f229e4438ed5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
     <None Remove="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <None Remove="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <None Remove="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
+    <None Remove="ClientApp\components\checkout\checkout-form\checkout-form.component.ts" />
+    <None Remove="ClientApp\components\checkout\checkout-success\checkout-success.component.ts" />
+    <None Remove="ClientApp\components\checkout\checkout-summary\checkout-summary.component.ts" />
+    <None Remove="ClientApp\components\checkout\checkout.component.ts" />
     <None Remove="ClientApp\components\shared\gallery.component.ts" />
     <None Remove="ClientApp\filters\index.ts" />
     <None Remove="ClientApp\index.d.ts" />
@@ -36,6 +41,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Stripe.net" Version="19.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,6 +61,10 @@
     <TypeScriptCompile Include="ClientApp\components\catalog\product-list\product-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-sort\product-sort.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\checkout\checkout-form\checkout-form.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\checkout\checkout-success\checkout-success.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\checkout\checkout-summary\checkout-summary.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\checkout\checkout.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\product\product-detail.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\shared\gallery.component.ts" />
     <TypeScriptCompile Include="ClientApp\filters\index.ts" />
