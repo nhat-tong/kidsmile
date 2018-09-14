@@ -94,7 +94,10 @@ export default class ProductDetailComponent extends Vue {
         this.computeProductVariant();
     }
 
-    addProductToCart() { }
+    addProductToCart() {
+        this.$store.dispatch('cartModule/addProductToCart', this.variant);
+        this.$toastr('success', 'Product added to cart successfully.');
+    }
 
     openGallery(index) {
         this.index = index;

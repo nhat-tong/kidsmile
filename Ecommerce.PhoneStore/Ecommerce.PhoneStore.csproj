@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\cart\cart-item\cart-item.component.ts" />
+    <None Remove="ClientApp\components\cart\cart.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.vue" />
     <None Remove="ClientApp\components\catalog\product-filter\filter-accordion\filter-accordion.component.ts" />
@@ -17,6 +19,7 @@
     <None Remove="ClientApp\components\catalog\search-bar\search-bar.component.ts" />
     <None Remove="ClientApp\components\shared\gallery.component.ts" />
     <None Remove="ClientApp\filters\index.ts" />
+    <None Remove="ClientApp\index.d.ts" />
     <None Remove="ClientApp\main.ts" />
     <None Remove="ClientApp\router\index.ts" />
     <None Remove="ClientApp\router\routes.ts" />
@@ -41,6 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\cart\cart-item\cart-item.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\cart\cart.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.vue" />
     <TypeScriptCompile Include="ClientApp\components\catalog\product-filter\filter-accordion\filter-accordion.component.ts" />
@@ -53,6 +58,7 @@
     <TypeScriptCompile Include="ClientApp\components\product\product-detail.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\shared\gallery.component.ts" />
     <TypeScriptCompile Include="ClientApp\filters\index.ts" />
+    <TypeScriptCompile Include="ClientApp\index.d.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\router\index.ts" />
     <TypeScriptCompile Include="ClientApp\router\routes.ts" />

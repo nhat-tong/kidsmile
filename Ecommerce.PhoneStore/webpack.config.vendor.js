@@ -19,7 +19,9 @@ module.exports = env => {
                     "vue-router",
                     "bootstrap/dist/css/bootstrap.min.css",
                     "bootstrap-vue",
-                    "nprogress/nprogress.css"
+                    "nprogress/nprogress.css",
+                    "@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css",
+                    "@deveodk/vue-toastr"
                 ]
             },
             module: {

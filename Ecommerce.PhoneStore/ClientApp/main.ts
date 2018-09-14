@@ -1,6 +1,8 @@
 ﻿import Vue from "vue";
 import BootstrapVue from "bootstrap-vue";
 import axios from "axios";
+import VueToastr from '@deveodk/vue-toastr';
+
 import AppComponent from "./components/app/app.component.vue";
 
 import router from "./router/index";
@@ -11,6 +13,10 @@ Vue.filter('currency', currency);
 Vue.filter('date', date);
 
 Vue.use(BootstrapVue);
+Vue.use(VueToastr, {
+    defaultPosition: 'toast-top-right',
+    defaultTimeout: 1000
+});
 
 // restore application state
 const applicationState = localStorage.getItem("applicationState");

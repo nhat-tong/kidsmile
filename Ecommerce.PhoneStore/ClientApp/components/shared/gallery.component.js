@@ -5,15 +5,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 let GalleryComponent = class GalleryComponent extends Vue {
     constructor() {
         super();
+        this.index = 0;
     }
-    close() { }
-    prev() { }
-    next() { }
+    created() {
+        this.index = this.idx;
+    }
+    close() {
+        this.$emit('close');
+    }
+    prev() {
+        this.index -= 1;
+        if (this.index < 0) {
+            this.index = this.items.length - 1;
+        }
+    }
+    next() {
+        this.index += 1;
+        if (this.index > this.items.length - 1) {
+            this.index = 0;
+        }
+    }
 };
+__decorate([
+    Prop({ required: true })
+], GalleryComponent.prototype, "items", void 0);
+__decorate([
+    Prop({ required: true })
+], GalleryComponent.prototype, "idx", void 0);
 GalleryComponent = __decorate([
     Component
 ], GalleryComponent);

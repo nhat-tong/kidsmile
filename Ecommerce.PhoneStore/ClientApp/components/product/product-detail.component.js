@@ -62,12 +62,17 @@ let ProductDetailComponent = class ProductDetailComponent extends Vue {
         this.computeStorage();
         this.computeProductVariant();
     }
-    addProductToCart() { }
-    openGallery() {
-        this.open = true;
-        this.index = 0;
+    addProductToCart() {
+        this.$store.dispatch('cartModule/addProductToCart', this.variant);
+        this.$toastr('success', 'Product added to cart successfully.');
     }
-    back() { }
+    openGallery(index) {
+        this.index = index;
+        this.open = true;
+    }
+    back() {
+        this.$router.go(-1);
+    }
 };
 __decorate([
     Watch('colour')
