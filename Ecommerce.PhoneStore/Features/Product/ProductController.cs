@@ -1,5 +1,9 @@
 ﻿#region using
+using Ecommerce.Core.Entities;
+using Ecommerce.Core.Shared;
 using Ecommerce.Infrastructure.Data;
+using Ecommerce.PhoneStore.Features.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -105,6 +109,78 @@ namespace Ecommerce.PhoneStore.Features.Catalog
             if (product == null) return NotFound();
 
             return Ok(product);
+        }
+        #endregion
+
+        #region Create
+        [HttpPost, Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([FromBody] CreateProductModel model)
+        {
+            var brand = await _dbContext.Brands.FirstOrDefaultAsync(x => x.Name == model.Brand);
+
+            if (brand == null)
+                brand = new Brand { Name = model.Brand };
+
+            var os = await _dbContext.OS.FirstOrDefaultAsync(x => x.Name == model.OS);
+
+            if (os == null)
+                os = new OS { Name = model.OS };
+
+            var product = new Core.Entities.Product
+            {
+                Name = model.Name,
+                Slug = model.Name.GenerateSlug(),
+                ShortDescription = model.ShortDescription,
+                Description = model.Description,
+                TalkTime = model.TalkTime,
+                StandbyTime = model.StandbyTime,
+                ScreenSize = model.ScreenSize,
+                Brand = brand,
+                OS = os,
+                Thumbnail = "/assets/images/thumbnail.jpeg",
+                Images = new List<Image>
+        {
+          new Image { Url = "/assets/images/gallery1.jpeg" },
+          new Image { Url = "/assets/images/gallery2.jpeg" },
+          new Image { Url = "/assets/images/gallery3.jpeg" },
+          new Image { Url = "/assets/images/gallery4.jpeg" },
+          new Image { Url = "/assets/images/gallery5.jpeg" },
+          new Image { Url = "/assets/images/gallery6.jpeg" }
+        }
+            };
+
+            foreach (var feature in model.Features)
+            {
+                var feat = await _dbContext.Features.SingleAsync(x => x.Name == feature);
+                product.ProductFeatures.Add(new ProductFeature { Feature = feat });
+            }
+
+            foreach (var variant in model.Variants)
+            {
+                var colour = await _dbContext.Colours.FirstOrDefaultAsync(x => x.Name == variant.Colour);
+
+                if (colour == null)
+                    colour = new Colour { Name = variant.Colour };
+
+                var capacity = Convert.ToInt32(variant.Storage.Substring(0, variant.Storage.IndexOf("GB")));
+                var storage = await _dbContext.Storages.FirstOrDefaultAsync(x => x.Capacity == capacity);
+
+                if (storage == null)
+                    storage = new Storage { Capacity = capacity };
+
+                product.ProductVariants.Add(new ProductVariant
+                {
+                    Colour = colour,
+                    Storage = storage,
+                    Price = variant.Price
+                });
+            }
+
+            _dbContext.Products.Add(product);
+
+            await _dbContext.SaveChangesAsync();
+
+            return Ok();
         }
         #endregion
     }

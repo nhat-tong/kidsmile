@@ -5,6 +5,8 @@ import CheckoutComponent from '../components/checkout/checkout.component.vue';
 import AdminComponent from '../components/admin/admin.component.vue';
 import AdminOrderComponent from '../components/admin/order/admin-order.component.vue';
 import AccountComponent from '../components/account/account.component.vue';
+import AdminProductComponent from '../components/admin/product/admin-product.component.vue';
+import CreateProductComponent from '../components/admin/product/create-product.component.vue';
 
 const routes = [
     { path: '/products', component: CatalogComponent },
@@ -20,6 +22,14 @@ const routes = [
             {
                 path: 'order',
                 component: AdminOrderComponent
+            },
+            {
+                path: 'product',
+                component: AdminProductComponent
+            },
+            {
+                path: 'product/create',
+                component: CreateProductComponent
             }
         ]
     },

@@ -9,6 +9,10 @@
   <ItemGroup>
     <None Remove="ClientApp\components\account\account.component.ts" />
     <None Remove="ClientApp\components\admin\order\admin-order.component.ts" />
+    <None Remove="ClientApp\components\admin\product\admin-product.component.ts" />
+    <None Remove="ClientApp\components\admin\product\create-product.component.ts" />
+    <None Remove="ClientApp\components\admin\product\variant-modal.component.ts" />
+    <None Remove="ClientApp\components\admin\product\variant-modal.component.vue" />
     <None Remove="ClientApp\components\cart\cart-item\cart-item.component.ts" />
     <None Remove="ClientApp\components\cart\cart.component.ts" />
     <None Remove="ClientApp\components\catalog\catalog.component.ts" />
@@ -24,6 +28,14 @@
     <None Remove="ClientApp\components\checkout\checkout-success\checkout-success.component.ts" />
     <None Remove="ClientApp\components\checkout\checkout-summary\checkout-summary.component.ts" />
     <None Remove="ClientApp\components\checkout\checkout.component.ts" />
+    <None Remove="ClientApp\components\model\Product.ts" />
+    <None Remove="ClientApp\components\shared\form\form-input-base.component.ts" />
+    <None Remove="ClientApp\components\shared\form\form-input\form-input.component.ts" />
+    <None Remove="ClientApp\components\shared\form\form-multiselect\form-multiselect.component.ts" />
+    <None Remove="ClientApp\components\shared\form\form-multiselect\form-multiselect.component.vue" />
+    <None Remove="ClientApp\components\shared\form\form-textarea\form-textarea.component.ts" />
+    <None Remove="ClientApp\components\shared\form\form-typeahead\form-typeahead.component.ts" />
+    <None Remove="ClientApp\components\shared\form\form-typeahead\form-typeahead.component.vue" />
     <None Remove="ClientApp\components\shared\gallery.component.ts" />
     <None Remove="ClientApp\components\shared\order-list\order-list.component.ts" />
     <None Remove="ClientApp\filters\index.ts" />
@@ -55,6 +67,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\account\account.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\admin\order\admin-order.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\admin\product\admin-product.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\admin\product\create-product.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\admin\product\variant-modal.component.vue" />
+    <TypeScriptCompile Include="ClientApp\components\admin\product\variant-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\cart\cart-item\cart-item.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\cart\cart.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\catalog\catalog.component.ts" />
@@ -70,7 +86,15 @@
     <TypeScriptCompile Include="ClientApp\components\checkout\checkout-success\checkout-success.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\checkout\checkout-summary\checkout-summary.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\checkout\checkout.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\model\Product.ts" />
     <TypeScriptCompile Include="ClientApp\components\product\product-detail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-input-base.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-input\form-input.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-multiselect\form-multiselect.component.vue" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-multiselect\form-multiselect.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-textarea\form-textarea.component.ts" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-typeahead\form-typeahead.component.vue" />
+    <TypeScriptCompile Include="ClientApp\components\shared\form\form-typeahead\form-typeahead.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\shared\gallery\gallery.component.ts" />
     <TypeScriptCompile Include="ClientApp\components\shared\order-list\order-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\filters\index.ts" />
@@ -81,10 +105,6 @@
     <TypeScriptCompile Include="ClientApp\store\auth.module.ts" />
     <TypeScriptCompile Include="ClientApp\store\state.ts" />
     <TypeScriptCompile Include="ClientApp\vue-router.shims.d.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\components\admin\product\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">
