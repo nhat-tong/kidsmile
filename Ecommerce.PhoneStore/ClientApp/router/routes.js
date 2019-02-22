@@ -11,11 +11,20 @@ const routes = [
     { path: '/products', component: CatalogComponent },
     { path: '/products/:slug', component: ProductDetailComponent },
     { path: '/cart', component: CartComponent },
-    { path: '/checkout', component: CheckoutComponent },
-    { path: '/account', component: AccountComponent },
+    {
+        path: '/checkout',
+        component: CheckoutComponent,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/account',
+        component: AccountComponent,
+        meta: { requiresAuth: true }
+    },
     {
         path: '/admin',
         component: AdminComponent,
+        meta: { requiresAuth: true },
         redirect: '/admin/order',
         children: [
             {

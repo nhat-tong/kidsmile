@@ -32,6 +32,17 @@ if (applicationState) {
     }
 }
 
+axios.interceptors.response.use(response => {
+    return response;
+}, error => {
+    if (error.response.status === 401) {
+        store.commit('authModule/logout');
+        store.commit('authModule/showAuthModal');
+        return;
+    }
+    return error;
+});
+
 new Vue({
     el: "#app-root",
     router,

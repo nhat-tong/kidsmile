@@ -1,12 +1,15 @@
 ﻿#region using
 using System;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Ecommerce.Core.Shared;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.PhoneStore.Framework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -62,6 +65,17 @@ namespace Ecommerce.PhoneStore
                     RequireExpirationTime = true,
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
+                };
+
+                options.Events = new JwtBearerEvents
+                {
+                    // https://github.com/blowdart/AspNetAuthorizationWorkshop
+                    // https://docs.microsoft.com/en-us/aspnet/core/security/authentication
+                    OnAuthenticationFailed = async context =>
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        await Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync(context.HttpContext);
+                    }
                 };
             });
 
