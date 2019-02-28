@@ -22,7 +22,7 @@
                     {{ product.shortDescription }}
                 </p>
 
-                <h5>Features</h5>
+                <!--<h5>Features</h5>
                 <ul>
                     <li v-for="feature in product.features" :key="feature">{{ feature }}</li>
                 </ul>
@@ -38,6 +38,12 @@
 
                 <p class="mt-4 mb-4">
                     <b>Price:</b> {{ variant.price | currency }}
+                </p>-->
+                <h5>Size</h5>
+                5-14y
+
+                <p class="mt-4 mb-4">
+                    <b>Price:</b> 170k
                 </p>
 
                 <b-button variant="primary" @click="addProductToCart">Add to cart</b-button>

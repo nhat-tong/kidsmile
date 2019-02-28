@@ -42,6 +42,7 @@ namespace Ecommerce.PhoneStore
                    .AddDefaultTokenProviders();
 
             // Configure authentication
+            /*
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -78,6 +79,7 @@ namespace Ecommerce.PhoneStore
                     }
                 };
             });
+            */
 
             services.Configure<AuthenticationOption>(Configuration.GetSection("Authentication"));
 

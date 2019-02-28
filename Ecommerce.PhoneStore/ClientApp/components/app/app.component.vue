@@ -5,7 +5,9 @@
             <b-navbar-brand to="/">Kid Smile Shop - Chuyên quần áo trẻ em xuất khẩu</b-navbar-brand>
             <b-collapse is-nav id="nav_collapse">
                 <b-navbar-nav>
-                    <b-nav-item to="/products">Danh mục sản phẩm</b-nav-item>
+                    <b-nav-item to="/products">Catalog</b-nav-item>
+                    <b-nav-item to="/blogs">Blog</b-nav-item>
+                    <b-nav-item to="/contact">Contact</b-nav-item>
                     <b-nav-item v-if="isAdmin" to="/admin">Admin</b-nav-item>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto mr-4">

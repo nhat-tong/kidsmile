@@ -17,7 +17,8 @@
                               min-query-key="minPrice"
                               max-query-key="maxPrice" />
             </filter-accordion>
-            <filter-accordion>
+            
+            <!--<filter-accordion>
                 <span slot="header">Screen size</span>
                 <range-filter slot="body"
                               :min=0
@@ -41,7 +42,8 @@
             <filter-accordion>
                 <span slot="header">Features</span>
                 <multi-select-filter slot="body" query-key="features" :items="filters.features"></multi-select-filter>
-            </filter-accordion>
+            </filter-accordion>-->
+
         </b-list-group>
     </div>
 </template>
