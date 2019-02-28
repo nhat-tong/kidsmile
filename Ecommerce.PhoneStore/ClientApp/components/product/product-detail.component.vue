@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <b-container class="pt-4">
         <b-button variant="outline-secondary" @click.prevent="back">
             <i class="fas fa-arrow-left"></i>
@@ -22,31 +22,26 @@
                     {{ product.shortDescription }}
                 </p>
 
-                <!--<h5>Features</h5>
+                <h5>Tính năng nổi bật :</h5>
                 <ul>
                     <li v-for="feature in product.features" :key="feature">{{ feature }}</li>
                 </ul>
+                
 
-                <h5>Variants</h5>
-                <b-form-group label="Colour">
+                <h5>Chọn màu sắc và kích thước :</h5>
+                <b-form-group label="Màu sắc">
                     <b-form-select :options="colours" v-model="colour" />
                 </b-form-group>
 
-                <b-form-group label="Capacity">
+                <b-form-group label="Kích thước">
                     <b-form-select :options="storages" v-model="capacity" />
                 </b-form-group>
 
                 <p class="mt-4 mb-4">
-                    <b>Price:</b> {{ variant.price | currency }}
-                </p>-->
-                <h5>Size</h5>
-                5-14y
-
-                <p class="mt-4 mb-4">
-                    <b>Price:</b> 170k
+                    <b>Giá:</b> {{ variant.price | currency }}
                 </p>
 
-                <b-button variant="primary" @click="addProductToCart">Add to cart</b-button>
+                <b-button variant="primary" @click="addProductToCart">Thêm vào giỏ hàng</b-button>
             </b-col>
         </b-row>
         <b-row>

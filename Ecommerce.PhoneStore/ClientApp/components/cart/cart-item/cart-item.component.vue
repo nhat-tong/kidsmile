@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <tr>
         <td>
             <b-row align-v="center">
@@ -8,10 +8,10 @@
                 <b-col class="align-middle">
                     <h5>{{ item.name }}</h5>
                     <div>
-                        Colour: <strong>{{ item.colour }}</strong>
+                        Màu sắc: <strong>{{ item.colour }}</strong>
                     </div>
                     <div>
-                        Capacity: <strong>{{ item.capacity }}</strong>
+                        Kích thước: <strong>{{ item.capacity }}</strong>
                     </div>
                 </b-col>
             </b-row>

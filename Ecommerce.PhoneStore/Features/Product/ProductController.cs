@@ -33,7 +33,7 @@ namespace Ecommerce.PhoneStore.Features.Catalog
         {
             var Query = $"%{q?.ToLower()}%";
             var Brands = string.IsNullOrEmpty(brands) ? new List<string>() : brands.Split('|').ToList();
-            var Capacity = string.IsNullOrEmpty(capacity) ? new List<int>() : capacity.Split('|').Select(x => Int32.Parse(x.Substring(0, x.IndexOf("GB")))).ToList();
+            var Capacity = string.IsNullOrEmpty(capacity) ? new List<string>() : capacity.Split('|').Select(x => x.Substring(0, x.IndexOf("GB"))).ToList();
             var Colours = string.IsNullOrEmpty(colours) ? new List<string>() : colours.Split('|').ToList();
             var OS = string.IsNullOrEmpty(os) ? new List<string>() : os.Split('|').ToList();
             var Features = string.IsNullOrEmpty(features) ? new List<string>() : features.Split('|').ToList();
@@ -100,7 +100,7 @@ namespace Ecommerce.PhoneStore.Features.Catalog
                     ColourId = v.ColourId,
                     Colour = v.Colour.Name,
                     StorageId = v.StorageId,
-                    Capacity = $"{v.Storage.Capacity}GB",
+                    Capacity = $"{v.Storage.Capacity}",
                     Price = v.Price
                 })
             })
@@ -162,7 +162,7 @@ namespace Ecommerce.PhoneStore.Features.Catalog
                 if (colour == null)
                     colour = new Colour { Name = variant.Colour };
 
-                var capacity = Convert.ToInt32(variant.Storage.Substring(0, variant.Storage.IndexOf("GB")));
+                var capacity = variant.Storage.Substring(0, variant.Storage.IndexOf("GB"));
                 var storage = await _dbContext.Storages.FirstOrDefaultAsync(x => x.Capacity == capacity);
 
                 if (storage == null)
