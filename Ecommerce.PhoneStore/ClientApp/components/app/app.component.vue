@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="app">
+    <div class="app" v-cloak>
         <b-navbar toggleable="md" type="dark" variant="dark">
             <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
             <b-navbar-brand to="/">Kid Smile Shop - Chuyên quần áo trẻ em xuất khẩu</b-navbar-brand>
@@ -21,6 +21,11 @@
             <router-view />
         </transition>
 
+        <b-navbar class="footer" toggleable="md" type="dark" variant="dark">
+            <span class="copyright" >
+                <a target="_blank" href="https://www.facebook.com/Kid-smile-Shop-Chuy%C3%AAn-Qu%E1%BA%A7n-%C3%81o-Tr%E1%BA%BB-Em-Xu%E1%BA%A5t-Kh%E1%BA%A9u-1731585566888051/">@ {{currentYear}} by Kid Smile Shop</a>
+            </span>
+        </b-navbar>
         <auth-modal :show="showAuthModal" />
     </div>
 </template>
@@ -46,5 +51,24 @@
     .fade-enter,
     .fade-leave-to {
         opacity: 0;
+    }
+
+    .footer {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        z-index: 1030;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-left: 600px;
+        color: #fff;
+    }
+
+    .copyright > a {
+        color: #fff;
     }
 </style>

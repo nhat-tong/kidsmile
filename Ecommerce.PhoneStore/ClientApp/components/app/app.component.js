@@ -12,6 +12,7 @@ import CartSummaryComponent from '../cart/cart-summary/cart-summary.component.vu
 let AppComponent = class AppComponent extends Vue {
     constructor() {
         super();
+        this.currentYear = (new Date()).getFullYear();
     }
     get showAuthModal() {
         return this.$store.state.authModule.showAuthModal;

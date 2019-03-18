@@ -1,5 +1,5 @@
 ﻿export const currency = value => {
-    return parseFloat(value).toFixed(0) + "k";
+    return parseFloat(value).toFixed(3) + " VND";
 };
 
 export const date = value => {

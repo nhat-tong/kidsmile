@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3fac5cc8140ae93d9cbe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6070d49f755014159926"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -12500,13 +12500,13 @@ function applyToTag (styleElement, obj) {
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = vendor_e5682e796f61989e2a5e;
+module.exports = vendor_3376728eee504701fb54;
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(6))(72);
+module.exports = (__webpack_require__(6))(74);
 
 /***/ }),
 /* 8 */
@@ -12802,7 +12802,7 @@ exports = module.exports = __webpack_require__(4)(true);
 
 
 // module
-exports.push([module.i, "\nhtml,\nbody {\n    height: 100vh;\n}\ndiv.app,\ndiv.page {\n    height: 100% !important;\n}\n.fade-enter-active,\n.fade-leave-active {\n    transition: opacity 0.3s ease-in-out;\n}\n.fade-enter,\n.fade-leave-to {\n    opacity: 0;\n}\n", "", {"version":3,"sources":["D:/NHAT/SIDE PROJECTS/KidSmile/kidsmile/Ecommerce.PhoneStore/ClientApp/components/app/ClientApp/components/app/app.component.vue"],"names":[],"mappings":";AA8BA;;IAEA,cAAA;CACA;AAEA;;IAEA,wBAAA;CACA;AAEA;;IAEA,qCAAA;CACA;AAEA;;IAEA,WAAA;CACA","file":"app.component.vue","sourcesContent":["<template>\r\n    <div class=\"app\">\r\n        <b-navbar toggleable=\"md\" type=\"dark\" variant=\"dark\">\r\n            <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\r\n            <b-navbar-brand to=\"/\">Kid Smile Shop - Chuyên quần áo trẻ em xuất khẩu</b-navbar-brand>\r\n            <b-collapse is-nav id=\"nav_collapse\">\r\n                <b-navbar-nav>\r\n                    <b-nav-item to=\"/products\">Catalog</b-nav-item>\r\n                    <b-nav-item to=\"/blogs\">Blog</b-nav-item>\r\n                    <b-nav-item to=\"/contact\">Contact</b-nav-item>\r\n                    <b-nav-item v-if=\"isAdmin\" to=\"/admin\">Admin</b-nav-item>\r\n                </b-navbar-nav>\r\n                <b-navbar-nav class=\"ml-auto mr-4\">\r\n                    <cart-summary />\r\n                    <nav-item />\r\n                </b-navbar-nav>\r\n            </b-collapse>\r\n        </b-navbar>\r\n\r\n        <transition name=\"fade\" mode=\"out-in\">\r\n            <router-view />\r\n        </transition>\r\n\r\n        <auth-modal :show=\"showAuthModal\" />\r\n    </div>\r\n</template>\r\n\r\n<script lang=\"ts\" src=\"./app.component.ts\"></script>\r\n\r\n<style>\r\n    html,\r\n    body {\r\n        height: 100vh;\r\n    }\r\n\r\n    div.app,\r\n    div.page {\r\n        height: 100% !important;\r\n    }\r\n\r\n    .fade-enter-active,\r\n    .fade-leave-active {\r\n        transition: opacity 0.3s ease-in-out;\r\n    }\r\n\r\n    .fade-enter,\r\n    .fade-leave-to {\r\n        opacity: 0;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+exports.push([module.i, "\nhtml,\nbody {\n    height: 100vh;\n}\ndiv.app,\ndiv.page {\n    height: 100% !important;\n}\n.fade-enter-active,\n.fade-leave-active {\n    transition: opacity 0.3s ease-in-out;\n}\n.fade-enter,\n.fade-leave-to {\n    opacity: 0;\n}\n.footer {\n    position: fixed;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    z-index: 1030;\n}\n.copyright {\n    text-align: center;\n    padding-left: 600px;\n    color: #fff;\n}\n.copyright > a {\n    color: #fff;\n}\n", "", {"version":3,"sources":["D:/NHAT/SIDE PROJECTS/KidSmile/kidsmile/Ecommerce.PhoneStore/ClientApp/components/app/ClientApp/components/app/app.component.vue"],"names":[],"mappings":";AAmCA;;IAEA,cAAA;CACA;AAEA;;IAEA,wBAAA;CACA;AAEA;;IAEA,qCAAA;CACA;AAEA;;IAEA,WAAA;CACA;AAEA;IACA,gBAAA;IACA,SAAA;IACA,UAAA;IACA,QAAA;IACA,mBAAA;IACA,cAAA;CACA;AAEA;IACA,mBAAA;IACA,oBAAA;IACA,YAAA;CACA;AAEA;IACA,YAAA;CACA","file":"app.component.vue","sourcesContent":["<template>\r\n    <div class=\"app\" v-cloak>\r\n        <b-navbar toggleable=\"md\" type=\"dark\" variant=\"dark\">\r\n            <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\r\n            <b-navbar-brand to=\"/\">Kid Smile Shop - Chuyên quần áo trẻ em xuất khẩu</b-navbar-brand>\r\n            <b-collapse is-nav id=\"nav_collapse\">\r\n                <b-navbar-nav>\r\n                    <b-nav-item to=\"/products\">Catalog</b-nav-item>\r\n                    <b-nav-item to=\"/blogs\">Blog</b-nav-item>\r\n                    <b-nav-item to=\"/contact\">Contact</b-nav-item>\r\n                    <b-nav-item v-if=\"isAdmin\" to=\"/admin\">Admin</b-nav-item>\r\n                </b-navbar-nav>\r\n                <b-navbar-nav class=\"ml-auto mr-4\">\r\n                    <cart-summary />\r\n                    <nav-item />\r\n                </b-navbar-nav>\r\n            </b-collapse>\r\n        </b-navbar>\r\n\r\n        <transition name=\"fade\" mode=\"out-in\">\r\n            <router-view />\r\n        </transition>\r\n\r\n        <b-navbar class=\"footer\" toggleable=\"md\" type=\"dark\" variant=\"dark\">\r\n            <span class=\"copyright\" >\r\n                <a target=\"_blank\" href=\"https://www.facebook.com/Kid-smile-Shop-Chuy%C3%AAn-Qu%E1%BA%A7n-%C3%81o-Tr%E1%BA%BB-Em-Xu%E1%BA%A5t-Kh%E1%BA%A9u-1731585566888051/\">@ {{currentYear}} by Kid Smile Shop</a>\r\n            </span>\r\n        </b-navbar>\r\n        <auth-modal :show=\"showAuthModal\" />\r\n    </div>\r\n</template>\r\n\r\n<script lang=\"ts\" src=\"./app.component.ts\"></script>\r\n\r\n<style>\r\n    html,\r\n    body {\r\n        height: 100vh;\r\n    }\r\n\r\n    div.app,\r\n    div.page {\r\n        height: 100% !important;\r\n    }\r\n\r\n    .fade-enter-active,\r\n    .fade-leave-active {\r\n        transition: opacity 0.3s ease-in-out;\r\n    }\r\n\r\n    .fade-enter,\r\n    .fade-leave-to {\r\n        opacity: 0;\r\n    }\r\n\r\n    .footer {\r\n        position: fixed;\r\n        right: 0;\r\n        bottom: 0;\r\n        left: 0;\r\n        text-align: center;\r\n        z-index: 1030;\r\n    }\r\n\r\n    .copyright {\r\n        text-align: center;\r\n        padding-left: 600px;\r\n        color: #fff;\r\n    }\r\n\r\n    .copyright > a {\r\n        color: #fff;\r\n    }\r\n</style>"],"sourceRoot":""}]);
 
 // exports
 
@@ -13238,6 +13238,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 let AppComponent = class AppComponent extends __WEBPACK_IMPORTED_MODULE_0_vue__["default"] {
     constructor() {
         super();
+        this.currentYear = (new Date()).getFullYear();
     }
     get showAuthModal() {
         return this.$store.state.authModule.showAuthModal;
@@ -30916,7 +30917,11 @@ let ProductFilterComponent = class ProductFilterComponent extends __WEBPACK_IMPO
         super();
     }
     priceFormatter(value) {
-        return `${value}€`;
+        if (value == 0)
+            return '0';
+        if (value == 1000)
+            return '1.000.000 VND';
+        return `${value}.000 VND`;
     }
     reset() {
         this.$router.push({ query: {} });
@@ -32320,7 +32325,7 @@ module.exports = __webpack_require__(80);
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(6))(71);
+module.exports = (__webpack_require__(6))(73);
 
 /***/ }),
 /* 68 */
@@ -40235,7 +40240,7 @@ var Reflect;
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(6))(35);
+module.exports = (__webpack_require__(6))(37);
 
 /***/ }),
 /* 91 */
@@ -41014,6 +41019,29 @@ var render = function() {
         { attrs: { name: "fade", mode: "out-in" } },
         [_c("router-view")],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-navbar",
+        {
+          staticClass: "footer",
+          attrs: { toggleable: "md", type: "dark", variant: "dark" }
+        },
+        [
+          _c("span", { staticClass: "copyright" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href:
+                    "https://www.facebook.com/Kid-smile-Shop-Chuy%C3%AAn-Qu%E1%BA%A7n-%C3%81o-Tr%E1%BA%BB-Em-Xu%E1%BA%A5t-Kh%E1%BA%A9u-1731585566888051/"
+                }
+              },
+              [_vm._v("@ " + _vm._s(_vm.currentYear) + " by Kid Smile Shop")]
+            )
+          ])
+        ]
       ),
       _vm._v(" "),
       _c("auth-modal", { attrs: { show: _vm.showAuthModal } })
@@ -50453,7 +50481,7 @@ if (true) {
 
 "use strict";
 const currency = value => {
-    return parseFloat(value).toFixed(0) + "k";
+    return parseFloat(value).toFixed(3) + " VND";
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = currency;
 

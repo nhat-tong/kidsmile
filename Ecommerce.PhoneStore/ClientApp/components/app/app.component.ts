@@ -13,8 +13,11 @@ import CartSummaryComponent from '../cart/cart-summary/cart-summary.component.vu
     }
 })
 export default class AppComponent extends Vue {
+    currentYear: number;
+
     constructor() {
         super();
+        this.currentYear = (new Date()).getFullYear();
     }
 
     get showAuthModal() {

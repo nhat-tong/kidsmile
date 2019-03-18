@@ -20,7 +20,9 @@ export default class ProductFilterComponent extends Vue {
     }
 
     priceFormatter(value) {
-        return `${value}€`;
+        if (value == 0) return '0';
+        if (value == 1000) return '1.000.000 VND';
+        return `${value}.000 VND`;
     }
 
     reset() {
