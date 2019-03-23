@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6070d49f755014159926"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a068b724cba9614c26f0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -13591,21 +13591,21 @@ let CatalogComponent = class CatalogComponent extends __WEBPACK_IMPORTED_MODULE_
     }
     get sortedProducts() {
         switch (this.sort) {
-            case 1:
+            case 1:// descending price
                 return this.products.sort((a, b) => {
-                    return b.price > a.price;
+                    return a.price > b.price ? -1 : 1;
                 });
-            case 2:
+            case 2:// ascending name
                 return this.products.sort((a, b) => {
-                    return a.name > b.name;
+                    return a.name > b.name ? -1 : 1;
                 });
-            case 3:
+            case 3:// descending name
                 return this.products.sort((a, b) => {
-                    return b.name > a.name;
+                    return a.name > b.name ? 1 : -1;
                 });
-            default:
+            default:// ascending price
                 return this.products.sort((a, b) => {
-                    return a.price > b.price;
+                    return a.price > b.price ? 1 : -1;
                 });
         }
     }
