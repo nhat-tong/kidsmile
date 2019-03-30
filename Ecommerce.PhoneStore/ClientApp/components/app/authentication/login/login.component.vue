@@ -8,14 +8,16 @@
         </b-alert>
         <p>Login with your e-mail address and password.</p>
         <b-form-group label="E-mail">
-            <b-form-input v-model.trim="email" />
+            <b-form-input name="email" placeholder="Enter your email" v-model.trim="email" v-validate="'required'" />
+            <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
         </b-form-group>
         <b-form-group label="Password">
-            <b-form-input v-model.trim="password" type="password" />
+            <b-form-input name="password" type="password" placeholder="Enter your password" v-model.trim="password" v-validate="'required|min:6|max:35'" />
+            <span v-show="errors.has('password')" class="text-danger">{{ errors.first('password') }}</span>
         </b-form-group>
         <b-form-group>
-            <b-button variant="primary" type="submit" :disabled="loading">Login</b-button>
-            <b-button variant="default" @click="close" :disabled="loading">Cancel</b-button>
+            <b-button variant="primary" type="submit" :disabled="disableForm">Login</b-button>
+            <b-button variant="default" @click="close">Cancel</b-button>
         </b-form-group>
     </form>
 </template>

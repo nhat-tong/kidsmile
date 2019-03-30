@@ -17,7 +17,12 @@ let RegisterComponent = class RegisterComponent extends Vue {
     get loading() {
         return false;
     }
+    validateForm() {
+        return this.fields['email'].dirty;
+    }
     submit() {
+        if (this.errors.count() > 0)
+            return;
         const payload = {
             email: this.email,
             password: this.password,

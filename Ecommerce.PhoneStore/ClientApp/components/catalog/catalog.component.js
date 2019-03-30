@@ -28,21 +28,21 @@ let CatalogComponent = class CatalogComponent extends Vue {
     }
     get sortedProducts() {
         switch (this.sort) {
-            case 1:
+            case 1: // descending price
                 return this.products.sort((a, b) => {
-                    return b.price - a.price;
+                    return a.price > b.price ? -1 : 1;
                 });
-            case 2:
+            case 2: // ascending name
+                return this.products.sort((a, b) => {
+                    return a.name > b.name ? -1 : 1;
+                });
+            case 3: // descending name
                 return this.products.sort((a, b) => {
                     return a.name > b.name ? 1 : -1;
                 });
-            case 3:
+            default: // ascending price
                 return this.products.sort((a, b) => {
-                    return b.name > a.name ? 1 : -1;
-                });
-            default:
-                return this.products.sort((a, b) => {
-                    return a.price - b.price;
+                    return a.price > b.price ? 1 : -1;
                 });
         }
     }

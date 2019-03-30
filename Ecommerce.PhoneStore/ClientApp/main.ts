@@ -40,7 +40,7 @@ axios.interceptors.response.use(response => {
         store.commit('authModule/showAuthModal');
         return;
     }
-    return error;
+    return Promise.reject(error);
 });
 
 new Vue({

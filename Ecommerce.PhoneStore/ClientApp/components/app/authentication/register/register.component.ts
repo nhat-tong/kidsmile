@@ -12,7 +12,21 @@ export default class RegisterComponent extends Vue {
         super();
     }
 
-    get loading() {
+    get disableForm() {
+        if (this.fields['email']) {
+            if (!this.fields['email'].dirty || !this.fields['email'].validated) return true;
+        }
+
+        if (this.fields['password']) {
+            if (!this.fields['password'].dirty || !this.fields['password'].validated) return true;
+        }
+
+        if (this.fields['confirmPassword']) {
+            if (!this.fields['confirmPassword'].dirty || !this.fields['confirmPassword'].validated) return true;
+        }
+
+        if (this.errors.count() > 0) return true;
+
         return false;
     }
 
