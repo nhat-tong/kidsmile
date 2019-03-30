@@ -13,7 +13,17 @@ let LoginComponent = class LoginComponent extends Vue {
         this.password = '';
         this.error = null;
     }
-    get loading() {
+    get disableForm() {
+        if (this.fields['email']) {
+            if (!this.fields['email'].dirty || !this.fields['email'].validated)
+                return true;
+        }
+        if (this.fields['password']) {
+            if (!this.fields['password'].dirty || !this.fields['password'].validated)
+                return true;
+        }
+        if (this.errors.count() > 0)
+            return true;
         return false;
     }
     login() {

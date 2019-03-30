@@ -14,15 +14,24 @@ let RegisterComponent = class RegisterComponent extends Vue {
         this.confirmPassword = '';
         this.regErrors = null;
     }
-    get loading() {
+    get disableForm() {
+        if (this.fields['email']) {
+            if (!this.fields['email'].dirty || !this.fields['email'].validated)
+                return true;
+        }
+        if (this.fields['password']) {
+            if (!this.fields['password'].dirty || !this.fields['password'].validated)
+                return true;
+        }
+        if (this.fields['confirmPassword']) {
+            if (!this.fields['confirmPassword'].dirty || !this.fields['confirmPassword'].validated)
+                return true;
+        }
+        if (this.errors.count() > 0)
+            return true;
         return false;
     }
-    validateForm() {
-        return this.fields['email'].dirty;
-    }
     submit() {
-        if (this.errors.count() > 0)
-            return;
         const payload = {
             email: this.email,
             password: this.password,
